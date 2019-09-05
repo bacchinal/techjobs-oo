@@ -27,6 +27,41 @@ public class JobForm {
         with correct validation attributes and display names.
         Don't forget to add getters and setters
      */
+    @Notnull
+    @Size(min=1, message = "Location may not be empty")
+    private Location location;
+
+    @Notnull
+    @Size(min=1, message  "Skill may not be empty")
+    private CoreCompetency coreCompetency;
+
+    @Notnull
+    @Size(min=1, message "Position may not be empty")
+    private PositionType positionType;
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public CoreCompetency getCoreCompetency() {
+        return coreCompetency;
+    }
+
+    public void setCoreCompetency(CoreCompetency coreCompetency) {
+        this.coreCompetency = coreCompetency;
+    }
+
+    public PositionType getPositionType() {
+        return positionType;
+    }
+
+    public void setPositionType(PositionType positionType) {
+        this.positionType = positionType;
+    }
 
     private ArrayList<Employer> employers;
     private ArrayList<Location> locations;
