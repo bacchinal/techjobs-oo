@@ -7,6 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.launchcode.models.Job;
+import org.launchcode.models.*;
 
 import javax.validation.Valid;
 
@@ -41,7 +44,15 @@ public class JobController {
         // TODO #6 - Validate the JobForm model, and if valid, create a
         // new Job and add it to the jobData data store. Then
         // redirect to the job detail view for the new Job.
-
+         if (errors.hasErrors()) {
+             return "new-job";
+         }
+         String newName = jobForm.getName();
+         Employer newEmp = jobData.getEmployers().findById(jobForm.getEmployerId());
+         Location newLoc = jobData.getLocations().findById(jobForm.getLocationId());
+         CoreCompetency newSkill = jobData.getCoreCoempetencies().findByid(jobForm.getCoreCompetencyId());
+         Job newJob = new Job(newName, newEmp, newLoc, newSkill);
+         jobData.add(newJob);
         return "";
 
     }
