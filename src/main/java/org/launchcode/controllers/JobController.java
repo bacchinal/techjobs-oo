@@ -28,7 +28,7 @@ public class JobController {
 
         // TODO #1 - get the Job with the given ID and pass it into the view
         Job someJob = jobData.findById(id);
-        model.addAttribute(someJob);
+        model.addAttribute("job", someJob);
         return "job-detail";
     }
 
@@ -50,6 +50,7 @@ public class JobController {
          String newName = jobForm.getName();
          Employer newEmp = jobData.getEmployers().findById(jobForm.getEmployerId());
          Location newLoc = jobData.getLocations().findById(jobForm.getLocationId());
+         PositionType newpos = jobData.getPositionTypes().findById(jobForm.getPositionTypeId());
          CoreCompetency newSkill = jobData.getCoreCoempetencies().findByid(jobForm.getCoreCompetencyId());
          Job newJob = new Job(newName, newEmp, newLoc, newSkill);
          jobData.add(newJob);

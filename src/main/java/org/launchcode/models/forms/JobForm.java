@@ -28,16 +28,13 @@ public class JobForm {
         Don't forget to add getters and setters
      */
     @NotNull
-    @Size(min=1, message = "Location may not be empty")
-    private Location location;
+    private int locationId;
 
     @NotNull
-    @Size(min=1, message =  "Skill may not be empty")
-    private CoreCompetency coreCompetency;
+    private int coreCompetencyId;
 
     @NotNull
-    @Size(min=1, message = "Position may not be empty")
-    private PositionType positionType;
+    private int positionTypeId;
 
     public Location getLocation() {
         return location;
